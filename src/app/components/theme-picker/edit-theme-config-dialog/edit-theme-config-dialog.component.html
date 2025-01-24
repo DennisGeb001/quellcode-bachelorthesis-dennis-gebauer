@@ -1,0 +1,58 @@
+<h5 mat-dialog-title>Theme-Konfiguration ändern</h5>
+<mat-dialog-content>
+  <p>
+    Hier kannst du eine Theme-Konfiguration hochladen, um die Standardkonfiguration zu überschreiben.
+    Bitte stelle sicher, dass die Konfiguration dem gleichen Schema wie die Standardkonfiguration entspricht.
+    Du kannst eine passende Datei mit dem
+    <a href="https://material-foundation.github.io/material-theme-builder/" rel="noopener noreferrer" target="_blank">Material
+      Theme Builder</a>
+    generieren.
+    Aus der exportierten Zip-Datei des Theme Builders kannst du die <code>light.css</code> und <code>dark.css</code>
+    Dateien hochladen,
+    um das entsprechende Theme zu importieren.
+  </p>
+  <mat-divider class="hor-divider"></mat-divider>
+  <div class="palettes-comparison-container">
+    <div class="palettes-config-container">
+      <span class="mat-title-medium">Aktuelle Konfiguration</span>
+      <div class="palettes-config-preview">
+        @if (currentConfig.lightThemeVariables) {
+          <label>Light-Theme:</label>
+          <pre>{{ currentConfig.lightThemeVariables }}</pre>
+        }
+        @if (currentConfig.darkThemeVariables) {
+          <label>Dark-Theme:</label>
+          <pre>{{ currentConfig.darkThemeVariables }}</pre>
+        }
+      </div>
+    </div>
+    <mat-divider vertical></mat-divider>
+    <div class="palettes-config-container">
+      <span class="mat-title-medium">Neue Konfiguration</span>
+      @if (!importedLightTheme && !importedDarkTheme) {
+        <button (click)="fileInput.click()" id="select-file-button" mat-raised-button type="button">Dateien auswählen
+        </button>
+      } @else {
+        <button mat-mini-fab (click)="fileInput.click()" class="edit-config-button"
+                matTooltip="Ausgewählte Dateien ändern">
+          <mat-icon>edit</mat-icon>
+        </button>
+      }
+      <input #fileInput (change)="handleFilesSelected($event)" accept=".css" hidden id="file" multiple type="file">
+      <div class="palettes-config-preview">
+        @if (importedLightTheme) {
+          <label>Light-Theme:</label>
+          <pre>{{ importedLightTheme }}</pre>
+        }
+        @if (importedDarkTheme) {
+          <label>Dark-Theme:</label>
+          <pre>{{ importedLightTheme }}</pre>
+        }
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button (click)="dismiss()" mat-button>Abbrechen</button>
+  <button [mat-dialog-close]="getThemeVariablesImport()" cdkFocusInitial mat-flat-button>Speichern</button>
+</mat-dialog-actions>

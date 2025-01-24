@@ -1,0 +1,47 @@
+<mat-card class="relevant-guidelines-card">
+  <mat-card-header>
+    <mat-card-title>
+      <span>Relevante Richtlinien</span>
+      <button (click)="triggerEvaluation.emit()" id="evaluateButton" mat-button>Überprüfen</button>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    @if (evaluationPending) {
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    }
+    <mat-list>
+      @for (guidelineEvaluationMapEntry of sortedGuidelineEvaluationsList; track $index) {
+        <div class="guideline-list-item">
+          <span class="guideline-index mat-title-medium">{{ guidelineEvaluationMapEntry.guideline.id }}</span>
+          <div class="guideline-text">
+            <span>{{ guidelineEvaluationMapEntry.guideline.name }}</span>
+            @if (guidelineEvaluationMapEntry.evaluationResult && guidelineEvaluationMapEntry.guideline.evaluationType === GuidelineEvaluationType.COMPUTED && !guidelineEvaluationMapEntry.evaluationResult.success) {
+              <div class="failure-element-container mat-body-medium">
+                <span>Elemente mit fehlgeschlagener Überprüfung:</span>
+                @for (failureElement of guidelineEvaluationMapEntry.evaluationResult.failureElements; track $index) {
+                  <span class="failure-element">{{ elementToStringUsingOuterHTML(failureElement) }}</span>
+                }
+              </div>
+            }
+          </div>
+          <div class="guideline-icon-container">
+            @if (guidelineEvaluationMapEntry.guideline.evaluationType === GuidelineEvaluationType.COMPUTED) {
+              @if (!guidelineEvaluationMapEntry.evaluationResult) {
+                <mat-icon class="pending-icon" matTooltip="Überprüfung Ausstehend">schedule</mat-icon>
+              } @else if (guidelineEvaluationMapEntry.evaluationResult.success) {
+                <mat-icon class="fulfilled-icon" matTooltip="Erfüllt">check</mat-icon>
+              } @else {
+                <mat-icon class="not-fulfilled-icon" matTooltip="Nicht Erfüllt">close</mat-icon>
+              }
+            } @else {
+              <mat-checkbox [checked]="guidelineEvaluationMapEntry.evaluationResult?.success"
+                            (change)="guidelineEvaluationMapEntry.evaluationResult = {success: $event.checked}"
+                            class="guideline-evaluation-checkbox">
+              </mat-checkbox>
+            }
+          </div>
+        </div>
+      }
+    </mat-list>
+  </mat-card-content>
+</mat-card>

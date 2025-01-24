@@ -1,0 +1,29 @@
+.page-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+mat-card {
+  width: 75%;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+#htmlInput {
+  margin-right: 2rem;
+}
+
+textarea {
+  min-height: 30rem;
+  max-height: 30rem;
+  overflow: scroll;
+}

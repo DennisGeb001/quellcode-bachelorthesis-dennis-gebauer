@@ -1,0 +1,56 @@
+<div [style]="themeVariables" class="preview-container">
+  <mat-toolbar [ngClass]="getToolbarClass()" id="previewToolbar">
+    @if (showMenuButton()) {
+      @if (isDropDownMenu()) {
+        <button mat-icon-button id="preview-menu-button" class="menu-toggle-button" [matMenuTriggerFor]="menu"
+                #menuTrigger="matMenuTrigger">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" class="preview-element">
+          @for (navLink of toolbarConfig.controls.navItems.value; track navLink) {
+            <a mat-menu-item>{{ navLink.name }}</a>
+          }
+        </mat-menu>
+      } @else {
+        <button mat-icon-button (click)="sideNav?.toggle()" class="menu-toggle-button">
+          <mat-icon>menu</mat-icon>
+        </button>
+      }
+    }
+    <span>{{ toolbarConfig.controls.title.value }}</span>
+    <span class="spacer">
+      @if (!showMenuButton()) {
+        <div id="nav-link-container">
+        @for (navLink of toolbarConfig.controls.navItems.value; track $index) {
+          <a mat-button>{{ navLink.name }}</a>
+        }
+      </div>
+      }
+    </span>
+    @if (toolbarConfig.controls.showLoginButton.value) {
+      @if (loggedIn) {
+        <button mat-icon-button (click)="loggedIn = false" matTooltip="Logout" matTooltipClass="preview-tooltip">
+          <mat-icon>logout</mat-icon>
+        </button>
+      } @else {
+        <button mat-icon-button (click)="loggedIn = true" matTooltip="Login" matTooltipClass="preview-tooltip">
+          <mat-icon>login</mat-icon>
+        </button>
+      }
+    }
+  </mat-toolbar>
+  @if (showMenuButton() && !isDropDownMenu()) {
+    <mat-sidenav-container>
+      <mat-sidenav #sideNav mode="side" [ngClass]="getSidenavClass()" id="previewSidenav">
+        <mat-nav-list>
+          @for (navLink of toolbarConfig.controls.navItems.value; track navLink) {
+            <a mat-list-item>{{ navLink.name }}</a>
+          }
+        </mat-nav-list>
+      </mat-sidenav>
+      <div class="example-sidenav-content">
+        <p>Beispiel Inhalt</p>
+      </div>
+    </mat-sidenav-container>
+  }
+</div>

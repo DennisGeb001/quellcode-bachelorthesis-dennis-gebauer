@@ -1,0 +1,14 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+  app-component-overview {
+    .primary-sidenav {
+      background-color: color-mix(in srgb, var(--md-sys-color-primary-container) 20%, transparent);
+    }
+
+    .active-link {
+      background-color: color-mix(in srgb, var(--md-sys-color-primary) 20%, transparent);
+    }
+  }
+}

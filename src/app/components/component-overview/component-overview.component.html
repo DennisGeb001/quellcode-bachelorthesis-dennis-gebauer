@@ -1,0 +1,13 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened class="primary-sidenav">
+    <mat-nav-list>
+      @for (component of availableComponents; track $index) {
+        <a mat-list-item [routerLink]="[component | lowercase]" routerLinkActive="active-link">{{ component }}</a>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

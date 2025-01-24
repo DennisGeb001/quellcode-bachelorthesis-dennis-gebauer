@@ -1,0 +1,20 @@
+<div class="page-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Komponente analysieren</mat-card-title>
+      <mat-card-subtitle>Füge das HTML und CSS deiner Komponente ein um sie zu analysieren.</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="sourcecodeInputForm">
+          <mat-form-field appearance="outline" floatLabel="always" id="htmlInput">
+            <mat-label>HTML</mat-label>
+            <textarea matInput formControlName="htmlInput" cdkTextareaAutosize></textarea>
+          </mat-form-field>
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>CSS</mat-label>
+            <textarea matInput formControlName="cssInput" cdkTextareaAutosize></textarea>
+          </mat-form-field>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

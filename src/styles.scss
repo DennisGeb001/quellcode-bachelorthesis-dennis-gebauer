@@ -1,0 +1,131 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "theme";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.component-configuration-container {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+}
+
+.component-configuration-card {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 1200px;
+}
+
+.relevant-guidelines-card {
+  max-width: 30vw;
+}
+
+.guideline-list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  height: auto !important;
+  margin-bottom: 1rem;
+
+  .guideline-index {
+    width: 2rem;
+    padding-right: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .guideline-text {
+    width: 100%;
+  }
+
+  .pending-icon {
+    color: gray;
+  }
+
+  .fulfilled-icon {
+    color: var(--md-sys-color-primary);
+  }
+
+  .not-fulfilled-icon {
+    color: var(--md-sys-color-error);
+  }
+
+  .mdc-list-item__content {
+    padding-right: 1rem;
+  }
+
+  span {
+    white-space: normal;
+  }
+
+  .guideline-icon-container {
+    width: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    mat-checkbox {
+      margin-left: 0;
+    }
+  }
+}
+
+.configuration-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.configuration-form .form-row {
+  display: flex;
+  align-items: center;
+}
+
+.configuration-header {
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.configuration-card {
+  padding-top: 1rem !important;
+}
+
+.page-container {
+  position: absolute;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.preview-element {
+  transform: scale(0.65);
+  transform-origin: top left;
+}
+
+.preview-tooltip {
+  .mat-mdc-tooltip-surface {
+    transform: scale(0.65);
+    transform-origin: top;
+  }
+}
+
+.react-preview-menu > .MuiPaper-root {
+  transform: scale(0.65) !important;
+  transform-origin: top left !important;
+}
+
+.MuiTooltip-tooltip {
+  transform: scale(0.65) !important;
+  transform-origin: top !important;
+}
+
+.preview-container {
+  height: 15rem;
+}

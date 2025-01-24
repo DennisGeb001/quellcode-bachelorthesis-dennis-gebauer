@@ -1,0 +1,16 @@
+<div class="component-preview-container">
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style" [ngModel]="selectedWindowSize" (ngModelChange)="changeWindowSize($event)">
+    <mat-button-toggle [value]="WindowSizeClass.COMPACT">Compact</mat-button-toggle>
+    <mat-button-toggle [value]="WindowSizeClass.MEDIUM">Medium</mat-button-toggle>
+    <mat-button-toggle [value]="WindowSizeClass.EXPANDED">Expanded</mat-button-toggle>
+    <mat-button-toggle [value]="WindowSizeClass.LARGE">Large</mat-button-toggle>
+    <mat-button-toggle [value]="WindowSizeClass.EXTRA_LARGE">Extra Large</mat-button-toggle>
+  </mat-button-toggle-group>
+  <span>Breite: {{ getSelectedWindowSize() }}px (Preview ist skaliert um Faktor 0.65)</span>
+  <div [ngClass]="'component-preview-' + (selectedWindowSize | lowercase)">
+    <div class="preview-content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
+

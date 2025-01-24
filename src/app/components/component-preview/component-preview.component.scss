@@ -1,0 +1,40 @@
+.component-preview-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+mat-button-toggle-group {
+  margin-bottom: 0.5rem;
+}
+
+span {
+  margin-bottom: 1rem;
+}
+
+.component-preview-compact {
+  width: calc(599px * 0.65);
+}
+
+.component-preview-medium {
+  width: calc(839px * 0.65);
+}
+
+.component-preview-expanded {
+  width: calc(1199px * 0.65);
+}
+
+.component-preview-large {
+  width: calc(1599px * 0.65);
+}
+
+.component-preview-extra_large {
+  width: calc(1700px * 0.65);
+}
+
+.preview-content {
+  transform: scale(0.65);
+  transform-origin: top left;
+  width: calc(100% / 0.65);
+  height: 100%;
+}

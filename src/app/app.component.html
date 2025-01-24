@@ -1,0 +1,10 @@
+<header>
+  <mat-toolbar class="primary-toolbar">
+    <span>Komponentenschmiede</span>
+    <a mat-button [routerLink]="['configurator']" routerLinkActive="active-link">Konfigurator</a>
+    <a mat-button [routerLink]="['analyzer']" routerLinkActive="active-link">Analyse</a>
+  </mat-toolbar>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>

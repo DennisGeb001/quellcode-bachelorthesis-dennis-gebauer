@@ -1,0 +1,8 @@
+.failure-element-container {
+  display: flex;
+  flex-direction: column;
+
+  .failure-element {
+    color: var(--md-sys-color-error);
+  }
+}

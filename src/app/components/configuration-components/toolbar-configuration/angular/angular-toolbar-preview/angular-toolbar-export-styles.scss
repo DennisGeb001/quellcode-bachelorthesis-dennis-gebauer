@@ -1,0 +1,16 @@
+.spacer {
+  flex: 1 1 auto;
+  max-width: 100%;
+  min-width: 0;
+  margin: 0 1rem;
+}
+
+.menu-toggle-button {
+  margin-right: 0.5rem;
+}
+
+#nav-link-container {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
